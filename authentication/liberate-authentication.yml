@@ -1,0 +1,51 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.liberateinc.com/docs/calling-a-workflow
+docs: https://docs.liberateinc.com/docs/calling-a-workflow
+summary:
+  types:
+  - http
+  api_key_in: []
+  oauth2_flows: []
+  note: No OpenAPI is published for the Liberate Orchestration Platform API. This profile was read
+    directly from the documented curl invocation for triggering a workflow.
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  in: header
+  header: Authorization
+  description: A unique bearer token issued by Liberate. The token is scoped to a customer tenant and
+    environment (QA or production); the exact token and endpoint for a given workflow are published in
+    the properties of that workflow's Start Event inside the Liberate console.
+  token_issuance: Issued by Liberate to the customer; not self-service. No public token endpoint is
+    documented.
+  sources:
+  - https://docs.liberateinc.com/docs/calling-a-workflow
+console_sso:
+  supported: true
+  protocol: SAML 2.0
+  identity_provider_broker: AWS Cognito
+  documented_idps:
+  - Google Workspace
+  acs_url_pattern: https://<tenant>.auth.<region>.amazoncognito.com/saml2/idpresponse
+  entity_id_pattern: urn:amazon:cognito:sp:<user-pool-id>
+  setup: Customer downloads IdP metadata (e.g. GoogleIDPMetadata.xml) and sends it to the Liberate
+    engineering team, who finalize the SSO configuration.
+  docs: https://docs.liberateinc.com/docs/google-workspace
+  note: This is single sign-on for the Liberate web console, not for the workflow-trigger API.
+outbound_connection_auth:
+  description: Auth types Liberate workflows can use when calling OUT to external systems via a
+    Connection. These are consumed by, not exposed by, the Liberate API.
+  docs: https://docs.liberateinc.com/docs/connections
+  types:
+  - none
+  - basic
+  - bearer
+  - apiKey
+  - oauth2
+  - postgresql
+  oauth2_connection_fields:
+  - token_url
+  - client_id
+  - client_secret
