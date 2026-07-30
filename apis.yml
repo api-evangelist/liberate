@@ -1,27 +1,135 @@
 aid: liberate
 name: Liberate
-description: 'Liberate is a company surfaced as a portfolio company of redpoint-ventures and added to
-  the API Evangelist network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the
-  enrichment pipeline.'
+description: 'Liberate is an insurance-native AI company building generative voice, email, and SMS
+  agents that resolve customer inquiries end-to-end for carriers, agencies, and brokers. Its "system
+  of action" handles sales, servicing, and claims — verifying identity, gathering loss details, filing
+  FNOL, and driving the downstream workflow — while integrating with core insurance systems such as
+  Guidewire, Duck Creek, Vertafore, Applied, EZ Lynx, Salesforce, Insuresoft, TurboRater, Verisk, and
+  CoreLogic. Underneath the AI agents sits the Liberate Orchestration Platform, a low-code workflow
+  engine where developers compose modular workflows from connections, events, tasks, decision tables,
+  and JSONata transformations, then version, release, and deploy them across QA and production
+  environments. Workflows are triggered over HTTP with a bearer token against a per-customer
+  integration endpoint. Liberate is backed by Redpoint Ventures and states SOC 2, HIPAA, PCI DSS,
+  GDPR, and CCPA compliance.'
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/69d93976ca90059d5696cd0b/69d93976ca90059d5696cef7_Webclip.png
 url: https://raw.githubusercontent.com/api-evangelist/liberate/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - redpoint-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+x-tier: profiled
+x-tier-reason: docs-and-api-surface-captured
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
 tags:
 - Company
 - Ai
-apis: []
+- Insurance
+- InsurTech
+- Voice AI
+- AI Agents
+- Workflow Orchestration
+- Claims Automation
+- Low-Code
+- Contact Center
+apis:
+- aid: liberate:orchestration
+  name: Liberate Orchestration Platform API
+  description: 'HTTP interface for triggering Liberate workflows. A workflow is started with a PUT
+    request carrying a bearer token, a flow slug, and a JSON context object. Every customer receives
+    their own unique endpoint URL plus separate QA and production environments; the exact curl
+    invocation for a given workflow is published in the properties of that workflow''s Start Event.
+    Flows may be synchronous (the end output is returned as the response) or asynchronous (an
+    immediate status code and instance ID are returned while long-running or human-in-the-loop steps
+    continue).'
+  humanURL: https://docs.liberateinc.com/docs/calling-a-workflow
+  baseURL: https://integration.liberateinc.io
+  tags:
+  - Workflow Orchestration
+  - Automation
+  - Insurance
+  properties:
+  - type: Documentation
+    url: https://docs.liberateinc.com/docs/overview
+  - type: GettingStarted
+    url: https://docs.liberateinc.com/docs/calling-a-workflow
+  - type: Authentication
+    url: authentication/liberate-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: DomainSecurity
+  url: security/liberate-domain-security.yml
 - type: Website
   url: https://www.liberateinc.com/
+- type: DeveloperPortal
+  url: https://docs.liberateinc.com/
+- type: Documentation
+  url: https://docs.liberateinc.com/docs/overview
+- type: GettingStarted
+  url: https://docs.liberateinc.com/docs/calling-a-workflow
+- type: Support
+  url: http://signup.liberateinc.com/contact-us
+- type: Blog
+  url: https://www.liberateinc.com/blog
+- type: SignUp
+  url: https://www.liberateinc.com/request-demo
+- type: Login
+  url: https://app.liberateinc.com/login
+- type: TermsOfService
+  url: https://www.liberateinc.com/legal/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.liberateinc.com/legal/privacy-policy
+- type: TrustCenter
+  url: https://app.vanta.com/liberateinc.com/trust/a3f4px3jh3gd2prixhl6
+- type: Compliance
+  url: https://www.liberateinc.com/security
+- type: Integrations
+  url: https://www.liberateinc.com/integrations
+- type: Glossary
+  url: https://www.liberateinc.com/glossary
+- type: CaseStudies
+  url: https://www.liberateinc.com/case-studies
+- type: News
+  url: https://www.liberateinc.com/news
+- type: LinkedIn
+  url: https://www.linkedin.com/company/liberate-inc/
+- type: ChangeLog
+  url: changelog/liberate-changelog.yml
+- type: Authentication
+  url: authentication/liberate-authentication.yml
+- type: Conventions
+  url: conventions/liberate-conventions.yml
+- type: Conformance
+  url: conformance/liberate-conformance.yml
+- type: Lifecycle
+  url: lifecycle/liberate-lifecycle.yml
+- type: Sandbox
+  url: sandbox/liberate-sandbox.yml
+- type: DataModel
+  url: data-model/liberate-data-model.yml
+- type: LLMsTxt
+  url: llms/liberate-llms.txt
+- type: TrustCenter
+  url: security/liberate-trust-center.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence
