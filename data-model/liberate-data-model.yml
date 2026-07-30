@@ -1,0 +1,100 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.liberateinc.com/docs/overview
+docs: https://docs.liberateinc.com/docs/overview
+note: Derived from the documented platform concepts in the Liberate developer hub, NOT from an
+  OpenAPI document — Liberate publishes no spec, so no $ref graph was available. Relationships below
+  reflect what the guides state explicitly.
+entities:
+- name: Project
+  description: Organizational grouping for related business processes. Workflows are grouped under
+    projects, which also scope permissions.
+  docs: https://docs.liberateinc.com/docs/overview
+  relationships:
+  - {type: has_many, target: Workflow}
+- name: Workflow
+  description: A modular, reusable unit encapsulating specific business logic, composed on the
+    Liberate canvas from connections, events, and tasks. Represents the end-to-end execution of a
+    business process.
+  identifier: slug
+  variants: [synchronous, asynchronous]
+  docs: https://docs.liberateinc.com/docs/liberate-workflow-types
+  relationships:
+  - {type: belongs_to, target: Project}
+  - {type: has_many, target: Task}
+  - {type: has_many, target: Event}
+  - {type: has_many, target: Revision}
+  - {type: has_many, target: Release}
+  - {type: has_many, target: Session}
+  - {type: has_many, target: WorkflowInstance, via: project + workflow name}
+- name: Connection
+  description: A configured integration with an external system, API, or service. Carries a name,
+    description, per-environment base URLs, auth material, and optional key/value secrets.
+  auth_types: [none, basic, bearer, apiKey, oauth2, postgresql]
+  docs: https://docs.liberateinc.com/docs/connections
+  relationships:
+  - {type: has_many, target: Task, via: REST Task connection selection}
+- name: Event
+  description: A trigger within a workflow. Start Events begin execution (and carry the curl
+    invocation for the workflow), Intermediate Events pause or respond to asynchronous conditions,
+    End Events terminate the flow.
+  kinds: [start, intermediate, end]
+  docs: https://docs.liberateinc.com/docs/intermediate-events
+  relationships:
+  - {type: belongs_to, target: Workflow}
+- name: Task
+  description: An individual unit of work in a workflow.
+  kinds: [rest, mapping, code, error]
+  docs: https://docs.liberateinc.com/docs/tasks
+  relationships:
+  - {type: belongs_to, target: Workflow}
+  - {type: has_one, target: Connection, via: REST Task}
+  - {type: has_one, target: Task, via: error path to an Error Task}
+- name: DecisionTable
+  description: Visual representation of business rules — conditions and outcomes evaluated against
+    context data to automate decisions inside a workflow.
+  docs: https://docs.liberateinc.com/docs/decision-tables
+  relationships:
+  - {type: belongs_to, target: Workflow}
+- name: Context
+  description: The evolving state object carried through a workflow. Read and written by every step,
+    reshapeable with JSONata, and passable into a Workflow Instance.
+  docs: https://docs.liberateinc.com/docs/context-data-and-actions
+  relationships:
+  - {type: belongs_to, target: Session}
+- name: WorkflowInstance
+  description: A reference to another workflow embedded on the canvas like a task, enabling
+    service-oriented composition. Addressed by project plus workflow name, and fed reshaped context.
+  docs: https://docs.liberateinc.com/docs/calling-a-workflow-instance
+  relationships:
+  - {type: belongs_to, target: Workflow, via: calling workflow}
+  - {type: has_one, target: Workflow, via: target workflow}
+- name: Revision
+  description: An autosaved snapshot of a workflow, created whenever the workflow differs from the
+    last save. Browsable via Version History.
+  docs: https://docs.liberateinc.com/docs/release-management
+  relationships:
+  - {type: belongs_to, target: Workflow}
+  - {type: has_many, target: Release}
+- name: Release
+  description: A deployable artifact cut from the current version or a prior revision, optionally
+    carrying release notes, deployed to QA or production and rollback-capable.
+  docs: https://docs.liberateinc.com/docs/release-management
+  relationships:
+  - {type: belongs_to, target: Workflow}
+  - {type: belongs_to, target: Revision}
+- name: Session
+  description: One execution of a workflow, returned to the caller as an instance ID and reported on
+    through workflow and session reporting.
+  identifier: instance ID
+  docs: https://docs.liberateinc.com/docs/workflow-and-session-reporting
+  relationships:
+  - {type: belongs_to, target: Workflow}
+  - {type: has_one, target: Context}
+- name: Entity
+  description: A CSV dataset uploaded for use in workflow tasks such as data mapping (for example a
+    country-code lookup). Version-tracked with audit controls.
+  states: [current, uploading, archived, failed]
+  docs: https://docs.liberateinc.com/docs/entity-management
+  relationships:
+  - {type: has_many, target: Task, via: referenced in mapping}

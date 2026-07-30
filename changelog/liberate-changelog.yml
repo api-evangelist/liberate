@@ -1,0 +1,20 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.liberateinc.com/changelog
+url: https://docs.liberateinc.com/changelog
+scheme: dated-posts
+platform: ReadMe changelog
+current_version: v1.0
+entries:
+- title: Welcome to Liberate Orchestration Platform
+  url: https://docs.liberateinc.com/changelog/welcome-to-liberate-orchestration-platform
+  author: Jason St Pierre
+  date_relative: about 3 years ago (as displayed 2026-07-19; no absolute date is published on the entry)
+  breaking: false
+  additions:
+  - Launch of the developer hub and documentation for the Liberate Orchestration Platform.
+  highlights: Announcement post only — no API changes described.
+coverage_note: The changelog surface is real and dated but carries a single entry, posted at hub
+  launch. Guide pages in the hub show "Updated over 1 year ago", so platform changes since launch have
+  not been published here. Captured honestly rather than padded.
+related_release_process: lifecycle/liberate-lifecycle.yml

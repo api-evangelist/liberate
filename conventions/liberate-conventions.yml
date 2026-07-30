@@ -1,0 +1,71 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.liberateinc.com/docs/calling-a-workflow
+docs: https://docs.liberateinc.com/docs/overview
+scope: Liberate Orchestration Platform API — cross-cutting request/response semantics as documented in
+  the public developer hub. No OpenAPI is published, so nothing here is derived from a spec.
+authentication:
+  style: bearer-token
+  header: 'Authorization: Bearer <token>'
+  see: authentication/liberate-authentication.yml
+request:
+  method: PUT
+  note: Workflows are triggered with PUT, not POST. This is unusual and worth calling out to
+    integrators.
+  content_type: application/json
+  envelope:
+    slug: The flow slug / identifier of the workflow to trigger.
+    context: A JSON object of caller-supplied data seeded into the workflow's context. May be empty.
+  example_shape: '{"slug": "<flow-slug>", "context": {}}'
+  docs: https://docs.liberateinc.com/docs/calling-a-workflow
+endpoints:
+  per_customer: true
+  note: Every customer has their own unique endpoint URL. The documented example host is
+    https://integration.liberateinc.io; the authoritative URL for a given workflow is shown in that
+    workflow's Start Event properties.
+  environments:
+  - qa
+  - production
+response:
+  synchronous_flows:
+    returns: status code plus instance ID immediately, then the flow's end output as the response body
+      once execution completes
+    use_for: real-time processing where an immediate result is required
+  asynchronous_flows:
+    returns: status code plus instance ID immediately; execution continues in the background
+    use_for: long-running tasks and flows involving human interaction (minutes to days)
+  docs: https://docs.liberateinc.com/docs/liberate-workflow-types
+  instance_id: Returned on every trigger for both flow types; the handle for correlating a running
+    workflow session.
+data_transformation:
+  language: JSONata
+  applies_to:
+  - request transformation (body, headers) on a REST Task
+  - response transformation (body, headers) on a REST Task
+  - context reshaping into a Mapping Task or a Workflow Instance
+  docs: https://docs.liberateinc.com/docs/rest-task
+context_model:
+  description: A single evolving context object carries state across every step of a workflow. Steps
+    read from and write to it, and it can be reshaped with JSONata before being handed to a sub-workflow.
+  docs: https://docs.liberateinc.com/docs/context-data-and-actions
+error_handling:
+  style: error-task-routing
+  description: Errors raised by a task (REST Task, Code Task) redirect the flow to an associated Error
+    Task, where recovery, retry, or an alternative path is defined. Error occurrences are captured and
+    reported to the Liberate reporting system.
+  docs: https://docs.liberateinc.com/docs/error-task
+  note: Liberate publishes no API-level error-code registry or RFC 9457 problem-details envelope, so
+    no errors/ artifact was produced.
+idempotency:
+  supported: unknown
+  note: No idempotency key, header, or retry-safety contract is documented for the workflow-trigger
+    endpoint. Deliberately NOT wired as an Idempotency pointer — this is an absence, not a finding.
+pagination:
+  supported: not_applicable
+  note: The public API surface is a single workflow-trigger call; no collection endpoints are
+    documented.
+versioning:
+  see: lifecycle/liberate-lifecycle.yml
+rate_limits:
+  documented: false
+  note: No published rate limits or rate-limit response headers.

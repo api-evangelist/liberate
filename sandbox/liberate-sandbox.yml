@@ -1,0 +1,42 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.liberateinc.com/docs/preview-mode
+docs: https://docs.liberateinc.com/docs/preview-mode
+summary: Liberate separates test from live by ENVIRONMENT rather than by key prefix. Every customer is
+  provisioned both a QA and a production environment with distinct endpoint URLs and bearer tokens,
+  and the console ships an in-browser Preview Mode for executing a workflow without triggering it
+  programmatically. No public self-serve sandbox exists — access requires a provisioned tenant.
+environments:
+- name: qa
+  purpose: Deploy a release for validation before promoting to production.
+  endpoint: Per-customer; published in the Start Event properties for each workflow.
+  credentials: Separate bearer token per environment, issued by Liberate.
+- name: production
+  purpose: Live traffic.
+  endpoint: Per-customer; published in the Start Event properties for each workflow.
+  credentials: Separate bearer token per environment, issued by Liberate.
+preview_mode:
+  name: Preview Mode
+  access: Play icon in the left navigation bar of the Liberate console.
+  purpose: Test and validate workflows in the browser before deploying to QA or production.
+  inputs: The starting JSON payload the workflow expects as input, entered by hand.
+  observability:
+  - Real-time session call flow — the execution path across tasks, connections, and decision tables as
+    the workflow runs.
+  - Live view of the context object mutating step by step, so data handling can be verified.
+  docs: https://docs.liberateinc.com/docs/preview-mode
+connection_scoping:
+  description: Connections to external systems carry separate Base URLs and separate secrets for the
+    QA environment and the production environment, so a workflow promoted between environments points
+    at the matching downstream system without edits.
+  docs: https://docs.liberateinc.com/docs/connections
+test_values:
+  published: false
+  note: Liberate publishes no magic test identifiers, test cards, or fixture tokens. Sample context
+    payloads appear in the docs as illustrations of shape only — record IDs in those examples are
+    masked (e.g. Airtable base/table ids ending in ****) and are not usable test values. Nothing was
+    invented here.
+self_serve:
+  available: false
+  request_access: https://www.liberateinc.com/request-demo
+  trial_page: https://www.liberateinc.com/trial

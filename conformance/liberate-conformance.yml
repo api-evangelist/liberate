@@ -1,0 +1,53 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.liberateinc.com/security
+docs: https://www.liberateinc.com/security
+trust_center: https://app.vanta.com/liberateinc.com/trust/a3f4px3jh3gd2prixhl6
+standards:
+- id: soc2
+  conforms: true
+  evidence: 'liberateinc.com/security: "certifications in HIPAA, SOC 2, PCI, and GDPR" and "Our SOC2
+    certification verifies our strong security measures."'
+- id: hipaa
+  conforms: true
+  evidence: 'liberateinc.com/security: certifications listed as HIPAA, SOC 2, PCI, GDPR'
+- id: pci-dss
+  conforms: true
+  evidence: 'liberateinc.com/security: "SOC2, CCPA, HIPAA, and PCI DSS certifications"'
+- id: gdpr
+  conforms: true
+  evidence: 'liberateinc.com/security: GDPR listed among certifications'
+- id: ccpa
+  conforms: true
+  evidence: 'liberateinc.com/security: CCPA listed; a California Consumer Privacy Act Notice and
+    Notice at Collection is published at https://signup.liberateinc.com/ccpa'
+- id: saml2
+  conforms: true
+  evidence: Console SSO is configured as a custom SAML app brokered through AWS Cognito
+    (docs/google-workspace)
+- id: oauth2
+  conforms: false
+  evidence: OAuth 2 is offered as an OUTBOUND Connection type for calling external systems; the
+    Liberate API itself authenticates with a static bearer token, not OAuth 2.
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No problem+json error envelope is documented; errors are handled in-workflow via Error
+    Tasks.
+- id: openapi
+  conforms: false
+  evidence: No OpenAPI document is published. The docs hub's llms.txt advertises "endpoints in
+    OpenAPI" but indexes only guide pages — no spec was reachable at /openapi.json or /openapi.yaml on
+    docs.liberateinc.com or www.liberateinc.com (both 404, probed 2026-07-19).
+- id: asyncapi
+  conforms: false
+security_practices:
+  penetration_testing: 'Regularly conducted, per the security-page FAQ: "Liberate regularly conducts
+    penetration tests to find and fix any vulnerabilities before they can be exploited."'
+  encryption: All data encrypted in transit and at rest, including third-party sources and
+    integration credentials.
+  tenancy: Single-tenant by design — "Liberate never mixes your data with that of other customers";
+    each organization gets its own instance.
+  access_control: Role-based and attribute-based access control, plus project-based permissions.
+  audit: AWS CloudTrail logs and tracks account activity across the AWS infrastructure.

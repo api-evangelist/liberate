@@ -1,0 +1,41 @@
+generated: '2026-07-19'
+method: searched
+probe: false
+url: https://app.vanta.com/liberateinc.com/trust/a3f4px3jh3gd2prixhl6
+platform: Vanta Trust Center
+linked_from: https://www.liberateinc.com/security
+certifications:
+- SOC 2
+- HIPAA
+- PCI DSS
+- GDPR
+- CCPA
+evidence:
+- source: https://www.liberateinc.com/security
+  quote: Liberate provides enterprise-grade security with certifications in HIPAA, SOC 2, PCI, and
+    GDPR, so you can trust that we meet all your compliance requirements while keeping your data safe
+    and secure.
+- source: https://www.liberateinc.com/security
+  quote: SOC2, CCPA, HIPAA, and PCI DSS certifications give you peace of mind, ensuring that top
+    security practices are always in place.
+- source: https://www.liberateinc.com/security
+  kind: trust-center-link
+  note: The "View our trust center" call to action resolves to the Vanta-hosted trust center above.
+capture_note: The Vanta trust center is a client-rendered single-page app, so the certification list
+  above was read from Liberate's own security page rather than scraped from Vanta. The document
+  inventory behind the Vanta portal typically requires an NDA click-through and was not retrieved.
+privacy_notices:
+  ccpa: https://signup.liberateinc.com/ccpa
+  privacy_policy: https://www.liberateinc.com/legal/privacy-policy
+security_posture:
+  encryption_in_transit: true
+  encryption_at_rest: true
+  integration_credentials_encrypted: true
+  single_tenant_data_isolation: true
+  rbac: true
+  abac: true
+  project_based_permissions: true
+  penetration_testing: regular
+  audit_logging: AWS CloudTrail
+  sso: SAML 2.0 via AWS Cognito
+  infrastructure: AWS

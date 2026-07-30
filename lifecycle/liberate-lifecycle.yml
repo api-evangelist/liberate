@@ -1,0 +1,56 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.liberateinc.com/docs/release-management
+versioning:
+  scheme: docs-version
+  current: v1.0
+  docs: https://docs.liberateinc.com/
+  note: The developer hub is published at version v1.0. The workflow-trigger API itself carries no
+    version in its path, header, or body — the flow `slug` is the only selector.
+workflow_versioning:
+  description: Liberate versions customer workflows rather than the platform API. Revisions autosave
+    on every change; a Release is cut from the current version or any prior revision, optionally with
+    release notes.
+  revisions:
+    autosave: true
+    history_ui: Version History, at the top of the Liberate canvas
+  releases:
+    created_from:
+    - current version
+    - any prior revision
+    release_notes: supported
+  deployment:
+    targets:
+    - qa
+    - production
+    ui: release tab, right panel
+  rollback:
+    supported: true
+    scope: workflow releases
+    description: Revert to a previous known-good release to address issues found after deployment.
+    caveat: 'Entity Management CSV datasets are called out separately in the docs as NOT having
+      built-in rollback — once a replaced file becomes current it is used by all QA and production
+      workflows referencing it. See https://docs.liberateinc.com/docs/entity-management'
+  docs: https://docs.liberateinc.com/docs/release-management
+environments:
+- name: qa
+  purpose: pre-production validation of releases
+- name: production
+  purpose: live traffic
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No deprecation policy, Sunset/Deprecation header support (RFC 8594), or API end-of-life
+    schedule is published. No Deprecation pointer was wired.
+sla:
+  url: null
+  uptime_target: null
+  note: 'The security page claims "near-perfect uptime" but publishes no numeric uptime target and no
+    SLA document.'
+status_page:
+  url: null
+  probed:
+  - {host: 'https://status.liberateinc.com/', result: no-dns}
+  note: No public status page was found (status./trust./security. subdomains do not resolve). No
+    StatusPage pointer was wired.
+deprecated_operations: []
