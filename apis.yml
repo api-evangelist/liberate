@@ -11,6 +11,17 @@ description: 'Liberate is an insurance-native AI company building generative voi
   environments. Workflows are triggered over HTTP with a bearer token against a per-customer
   integration endpoint. Liberate is backed by Redpoint Ventures and states SOC 2, HIPAA, PCI DSS,
   GDPR, and CCPA compliance.'
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve
