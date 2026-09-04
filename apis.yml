@@ -24,15 +24,18 @@ deliveryModel:
   method: derived
 accessModel:
   pricing: unknown
-  onboarding: self-serve
+  onboarding: unknown
   trial: false
   try_now: false
   public: false
-  label: Self-serve signup
-  confidence: medium
+  label: Unknown
+  confidence: low
   source:
   - authentication
-  generated: '2026-07-22'
+  - security
+  - sandbox
+  - {url: 'https://www.liberateinc.com/', status: 301, note: 'declared website redirects to https://www.liberate.ai/ — a different registrable domain (liberateinc.com -> liberate.ai), possible rename or acquisition (probed 2026-09-03, roadmap#169)'}
+  generated: '2026-09-03'
   method: derived
 image: https://cdn.prod.website-files.com/69d93976ca90059d5696cd0b/69d93976ca90059d5696cef7_Webclip.png
 url: https://raw.githubusercontent.com/api-evangelist/liberate/refs/heads/main/apis.yml
