@@ -64,29 +64,94 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Liberate is an insurance-native AI company building generative voice, email, and SMS agents that resolve customer inquiries end-to-end for carriers, agencies, and brokers — covering sales, servicing, and claims, including identity verification and FNOL filing, integrated into core insurance systems (Guidewire, Duck Creek, Vertafore, Applied, EZ Lynx, Salesforce, Insuresoft, TurboRater, Verisk, CoreLogic).
+Liberate is an insurance-native AI company building generative voice, email, and SMS agents that resolve customer inquiries end-to-end for carriers, agencies, and brokers. Its "system of action" handles sales, servicing, and claims — verifying identity, gathering loss details, filing FNOL, and driving the downstream workflow — while integrating with core insurance systems such as Guidewire, Duck Creek, Vertafore, Applied, EZ Lynx, Salesforce, Insuresoft, TurboRater, Verisk, and CoreLogic. Underneath the AI agents sits the Liberate Orchestration Platform, a low-code workflow engine where developers compose modular workflows from connections, events, tasks, decision tables, and JSONata transformations, then version, release, and deploy them across QA and production environments. Workflows are triggered over HTTP with a bearer token against a per-customer integration endpoint. Liberate is backed by Redpoint Ventures and states SOC 2, HIPAA, PCI DSS, GDPR, and CCPA compliance.
 
-Underneath the AI agents sits the **Liberate Orchestration Platform**, a low-code workflow engine where developers compose modular workflows from connections, events, tasks, and decision tables with JSONata transformations, then version, release, and deploy them across QA and production environments.
+**Areas:** Company · Artificial Intelligence · Insurance · Insurtech · Voice AI · AI Agents · Workflow Orchestration · Claims Automation · Low-Code · Contact Center
 
-- Website — https://www.liberateinc.com/
-- Developer hub — https://docs.liberateinc.com/
-- Trigger a workflow — https://docs.liberateinc.com/docs/calling-a-workflow
+## Liberate on APIs.io
 
-Backed by: redpoint-ventures
+Everything profiled for Liberate is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/liberate/](https://apis.io/providers/liberate/)** — or go straight to one of the APIs or properties below.
 
-## Artifacts
+### APIs (1)
 
-| Artifact | Path | Method |
-|---|---|---|
-| Authentication | `authentication/liberate-authentication.yml` | searched |
-| Conventions | `conventions/liberate-conventions.yml` | searched |
-| Conformance | `conformance/liberate-conformance.yml` | searched |
-| Lifecycle | `lifecycle/liberate-lifecycle.yml` | searched |
-| Sandbox | `sandbox/liberate-sandbox.yml` | searched |
-| Changelog | `changelog/liberate-changelog.yml` | searched |
-| Data model | `data-model/liberate-data-model.yml` | searched |
-| llms.txt | `llms/liberate-llms.txt` | searched (verbatim) |
-| Trust center | `security/liberate-trust-center.yml` | searched |
-| Domain security | `security/liberate-domain-security.yml` | probed |
+- [Liberate Orchestration Platform API](https://apis.io/apis/liberate/orchestration/) — HTTP interface for triggering Liberate workflows. A workflow is started with a PUT request carrying a bearer token, a flow slug, and a JSON context object.…
 
-**Not published by Liberate** (deliberately absent, not fabricated): OpenAPI/AsyncAPI spec, first-party SDKs or CLI, MCP server, `/.well-known/` documents, status page, deprecation policy, error-code registry, OAuth scopes, pricing page, public GitHub organization.
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Liberate Authentication](https://apis.io/security/liberate/liberate-authentication/)
+- [Liberate Domain Security](https://apis.io/security/liberate/liberate-domain-security/)
+- [Liberate Trust Center](https://apis.io/security/liberate/liberate-trust-center/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.liberateinc.com/)
+- [Documentation](https://docs.liberateinc.com/docs/overview)
+- [Getting started](https://docs.liberateinc.com/docs/calling-a-workflow)
+- [Sign up](https://www.liberateinc.com/request-demo)
+- [Support](http://signup.liberateinc.com/contact-us)
+- [Blog](https://www.liberateinc.com/blog)
+- [Compliance](https://www.liberateinc.com/security)
+- [Trust centre](https://app.vanta.com/liberateinc.com/trust/a3f4px3jh3gd2prixhl6)
+- [Terms of service](https://www.liberateinc.com/legal/terms-of-service)
+- [Privacy policy](https://www.liberateinc.com/legal/privacy-policy)
+
+## API Evangelist rating
+
+**Kin Score 31.7** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 74.1 |
+| Contract quality | 0.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 15.8 |
+| Developer ergonomics | 52.4 |
+| Access clarity | 42.1 |
+
+**Agent readiness 2.5** — human-only
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | — |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 24.6** — Insurance
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/liberate/](https://apis.io/providers/liberate/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Liberate: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/liberate/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
